@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Keep Yourslef Updated</title>
+<link rel="stylesheet" href="css/clock_style.css">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/calendar_style.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+<script src="bootstrap/js/bootstrap.min.js"> </script>
+<script src="script/calendar.js"> </script>
+<script src="script/prefixfree.min.js"> </script>
+<script src="script/jquery-2.1.4.min.js"> </script>
+<script src="script/clock_script.js"> </script>
+<link rel="stylesheet" href="css/style.css"> 
+<style>
+		.stylish-panel {
+    padding: 20px 0;
+    text-align: center;
+}
+.stylish-panel > div > div{
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+.stylish-panel > div:hover > div{
+    margin-top: -10px;
+    border: 1px solid rgb(200, 200, 200);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
+    background: rgba(200, 200, 200, 0.1);
+    transition: 0.5s;
+}
+
+.stylish-panel > div:hover img {
+    border-radius: 50%;
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+	</style>
+</head>
+<body onLoad="setToday()">
+
+
+<div class="container" style="padding-bottom:60px">
+  <div class="page-header" id="top">
+    <h1 class="text-center">Keep Yourslef Updated</h1>
+  </div>
+  <div class="container">
+    <div class="row stylish-panel">
+      <div class="col-md-4">
+        <div>
+          <img src="images/clock.jpg" class="img-circle img-thumbnail" width="70%">
+          <h2>Clock</h2>
+          <p>Analogue and Digital Clock keeps you updated with the current time.
+          </p>
+          <a href="#clock" class="btn btn-primary" title="See more">Take a look »</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div>
+          <img src="images/calendar.jpg" alt="Texto Alternativo" class="img-circle img-thumbnail" width="70%">
+          <h2>Dynamic Calendar</h2>
+          <p>Dynamic Calendar allows you to view any month calendar for any year, so you can plan things well.
+          </p>
+          <a href="#calendar" class="btn btn-primary" title="See more">Take a look »</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div>
+          <img src="images/weather.png" alt="Texto Alternativo" class="img-circle img-thumbnail" width="70%">
+          <h2>Islamabad Weather</h2>
+          <p>Keep yourself updated with the present weather of Islamabad. Maybe it is not the time go outside without umbrella, because it rainy out there.
+          </p>
+          <a href="#weather" class="btn btn-primary" title="See more">Take a look »</a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+<!-- /container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="row" style="background-color: #673AB7; color:white; text-align:center">
+    <div class="col-lg-12">
+    <h2 id="clock"> Analogue + Digital Clock </h2>
+    </div>
+    </div>
+    <div class="row" style="background-color: #673AB7;">
+    	<div class="col-lg-12">
+              <div class="clock-circle">
+              <div class="clock-face">
+               <div id="hour" class="clock-hour"></div>
+               <div id="minute" class="clock-minute"></div>
+               <div id="second" class="clock-second"></div>
+              </div>
+            </div>
+               <div class="digital_clock" align="center">
+               <p id="digital_time"></p>
+               </div>
+        </div>
+    </div> <!--Clock Row Ends Here-->
+    <div class="row" style="background-color: #673AB7; color:white; text-align:right">
+    <div class="col-lg-12">
+    <a href="#top" class="btn btn-success" title="See more">Go to top</a>
+    </div>
+    </div>
+
+
+
+
+
+	<div class="row" style="background-color:rgb(238, 238, 238); color:rgb(112, 196, 105); text-align:center">
+    <div class="col-lg-12">
+    <h2 id="calendar"> Dynamic Calendar </h2>
+    </div>
+
+    </div>    <div class="row" style="background-color:rgb(238, 238, 238)">
+    	<div class="col-lg-12">
+             <div align="center">
+              <FORM NAME="calControl" onSubmit="return false;" method="post">
+                <TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0>
+                <TR align="center">
+                  <TD COLSPAN=7><SELECT NAME="month" onChange="selectDate()">
+                      <option>January</option>
+                      <option>February</option>
+                      <option>March</option>
+                      <option>April</option>
+                      <option>May</option>
+                      <option>June</option>
+                      <option>July</option>
+                      <option>August</option>
+                      <option>September</option>
+                      <option>October</option>
+                      <option>November</option>
+                      <option>December</option>
+                    </SELECT>
+                    <INPUT NAME="year" TYPE=TEXT SIZE=4 MAXLENGTH=4>
+                    <INPUT TYPE="button" NAME="Go" value="Show!" onClick="selectDate()" class="btn btn-md btn-info"></TD>
+                </TR>
+              </FORM>
+              <FORM NAME="calButtons" method="post">
+                <TR align="center">
+                  <TD><table id="table_cal" cellpadding="10"  class="flat-table">
+                    </table></TD>
+                </TR>
+                <TR align="center">
+                  <TD><input type="button" name="previousYear" value="Previous Year"  onClick="setPreviousYear()" class="btn btn-md btn-info ">
+                    <input type="button" name="previousYear" value="Previous Month"  onClick="setPreviousMonth()" class="btn btn-md btn-warning ">
+                    <input type="button" name="previousYear" value="Today"  onClick="setToday()" class="btn btn-md btn-default ">
+                    <input type="button" name="previousYear" value="&nbsp;&nbsp;&nbsp;&nbsp;Next Month&nbsp;&nbsp;&nbsp;&nbsp;"  onClick="setNextMonth()" class="btn btn-md btn-warning ">
+                    <input type="button" name="previousYear" value="&nbsp;&nbsp;&nbsp;&nbsp;Next Year&nbsp;&nbsp;&nbsp;&nbsp;"  onClick="setNextYear()" class="btn btn-md btn-info "></TD>
+                </TR>
+                </TABLE>
+              </FORM>
+            </div>
+        </div>
+    </div><!--Calendar Row Ends here-->
+	<div class="row" style="background-color: rgb(238, 238, 238); color:white; text-align:right">
+    <div class="col-lg-12">
+    <a href="#top" class="btn btn-success" title="See more">Go to top</a>
+    </div>
+    </div>
+
+
+
+
+	<div class="weather">
+	<div class="row">
+    	<div class="col-lg-12">
+	        <div class="htmll bodyy">
+            <div id="weather"></div>
+            </div>
+            <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.0.2/jquery.simpleWeather.min.js'></script>
+
+        <script src="script/index.js"> </script>
+
+        </div>
+    </div><!--Weather Div Closes here-->
+	</div>
+    <div class="row" style="background-color: rgb(238, 238, 238); color:white; text-align:right">
+    <div class="col-lg-12">
+    <a href="#top" class="btn btn-success" title="See more">Go to top</a>
+    </div>
+    </div>
+
+<script src="script/jquery.smooth-scroll.js"> </script>
+<script src="script/jquery.ba-bbq.js"> </script>
+<script>
+    $(document)
+    .on('click', 'a[href*="#"]', function() {
+      if ( this.hash && this.pathname === location.pathname ) {
+        $.bbq.pushState( '#/' + this.hash.slice(1) );
+        return false;
+      }
+    })
+    .ready(function() {
+      $(window).bind('hashchange', function(event) {
+        var tgt = location.hash.replace(/^#\/?/,'');
+        if ( document.getElementById(tgt) ) {
+          $.smoothScroll({scrollTarget: '#' + tgt});
+        }
+      });
+
+      $(window).trigger('hashchange');
+    });
+  </script>
+
+
+
+</body>
+</html>
